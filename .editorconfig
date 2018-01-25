@@ -1,0 +1,9 @@
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending for every file
+# Indent with 4 spaces
+[php]
+end_of_line = lf
+indent_style = space
+indent_size = 4
