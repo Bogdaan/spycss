@@ -1,6 +1,7 @@
 # SpyCss
 
 Analyze user interaction via CSS, without JavaScript on client-side.
+Demo at [spycss.hcbogdan.com](https://spycss.hcbogdan.com).
 
 > - Why?
 > - Because we can
@@ -14,12 +15,15 @@ backend.
 
 This library was created in order to simplify the creation of tracking css.
 
-
 ## How to use
 
 Generate css + html inside you views:
 ```
 <?php
+use SpyCss\SpyCss;
+use SpyCss\Interaction\Active;
+use SpyCss\Interaction\Focus;
+use SpyCss\Interaction\Hover;
 
 // <- inside controller or DI
 $userId = 'get_from_cookie--OR--fetch_from_db';
@@ -41,17 +45,17 @@ echo $s->builder()
 echo '<style>'.$s->extractStyles().'</style>';
 ```
 
+## To be done
+
+- [ ] Review browser support
+- [ ] Update demo
+
 ## Read more
 
 + [Backend api](backend-api)
 
-## To be done
-
-- [ ] Create simplest backend
-- [ ] Review browser support
-
 ## Contributing
 
-Inspired by [jbtronics/CrookedStyleSheets](https://github.com/jbtronics/CrookedStyleSheets).
-
 Pull request are welcome.
+
+Inspired by [jbtronics/CrookedStyleSheets](https://github.com/jbtronics/CrookedStyleSheets).

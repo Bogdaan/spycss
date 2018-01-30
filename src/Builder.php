@@ -81,7 +81,7 @@ class Builder
      */
     public function interactions(array $interactions)
     {
-        $this->interactions[] = $interactions;
+        $this->interactions = $interactions;
         return $this;
     }
 
@@ -164,11 +164,14 @@ class Builder
             }
 
             // add class to element attributes
-            $this->spyCss->addStyle(
+            $this->spyCss->addCss(
                 $i->getSnippet($this->spyCss)
             );
             $classList[] = $cssClass;
         }
+
+        // add classes
+        $attributes = $this->attributes;
         if (!empty($classList)) {
             if (!isset($attributes['class'])) {
                 $attributes['class'] = '';
@@ -177,7 +180,8 @@ class Builder
             }
             $attributes['class'] .= implode(' ', $classList);
         }
-        return Html::tag(
-            $this->tag, $this->attributes, $this->content, $this->closeTag);
+
+        return \SpyCss\Util\Html::tag(
+            $this->tag, $attributes, $this->content, $this->closeTag);
     }
 }

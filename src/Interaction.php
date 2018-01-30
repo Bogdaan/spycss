@@ -14,14 +14,14 @@ class Interaction
      *
      * @var string
      */
-    private $payload;
+    protected $payload;
 
     /**
      * Css class for interaction.
      *
      * @var string
      */
-    private $cssClass;
+    protected $cssClass;
 
     /**
      * Create interaction instance.

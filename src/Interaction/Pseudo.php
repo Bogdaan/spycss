@@ -29,8 +29,8 @@ class Pseudo extends \SpyCss\Interaction
             $spyCss->getBackend(),
             $spyCss->getUid(),
             $this->getName(),
-            $this->payload
+            $this->getPayload()
         ]);
-        return $this->cssClass.':hover::after {content: url('.$route.');}';
+        return '.'.$this->cssClass.':hover::after {content: url('.$route.');}';
     }
 }
