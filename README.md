@@ -1,6 +1,6 @@
 # SpyCss
 
-Analyze user interaction via CSS, without JavaScript on client-side.
+Analyze user interactions via CSS, without JavaScript on client-side.
 Demo at [spycss.hcbogdan.com](https://spycss.hcbogdan.com).
 
 > - Why?
@@ -17,7 +17,8 @@ This library was created in order to simplify the creation of tracking css.
 
 ## How to use
 
-Generate css + html inside you views:
+For example, you want to track click / focus / hover on some link. This snippet
+generates css and html for you link, inside view:
 ```
 <?php
 use SpyCss\SpyCss;
@@ -25,15 +26,16 @@ use SpyCss\Interaction\Active;
 use SpyCss\Interaction\Focus;
 use SpyCss\Interaction\Hover;
 
-// <- inside controller or DI
+// inside controller or DI:
 $userId = 'get_from_cookie--OR--fetch_from_db';
 $backendUrl = 'https://spy-css-backend/';
 $s = new \SpyCss\SpyCss($userId, $backendUrl);
 
-
-// <- inside you view
+// inside you view, generates element:
+// <a class="scsssXXXX" href="https://hcbogdan.com">Novikov Bogdan</a>
 echo $s->builder()
     ->tag('a')
+    ->content('Novikov Bogdan')
     ->attribute('href', 'https://hcbogdan.com')
     ->interactions([
         new Active('when-user-active'),
@@ -42,6 +44,7 @@ echo $s->builder()
     ])
     ->get();
 
+// generates special styles
 echo '<style>'.$s->extractStyles().'</style>';
 ```
 

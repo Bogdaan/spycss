@@ -25,12 +25,13 @@ class Pseudo extends \SpyCss\Interaction
      */
     public function getSnippet(\SpyCss\SpyCss $spyCss)
     {
+        $pseudoClass = $this->getName();
         $route = implode('/', [
             $spyCss->getBackend(),
             $spyCss->getUid(),
-            $this->getName(),
+            $pseudoClass,
             $this->getPayload()
         ]);
-        return '.'.$this->cssClass.':hover::after {content: url('.$route.');}';
+        return '.'.$this->cssClass.':'.$pseudoClass.'::after {content: url('.$route.');}';
     }
 }
