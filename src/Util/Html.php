@@ -76,11 +76,8 @@ class Html
 			if (isset($specialAttributes[$name])) {
 				if ($value===false && $name==='async') {
 					$html .= ' ' . $name.'="false"';
-				} elseif($value) {
-					$html .= ' ' . $name;
-					if (self::$renderSpecialAttributesValue) {
-						$html .= '="' . $name . '"';
-                    }
+				} elseif ($value) {
+	                $html .= ' ' . $name;
 				}
 			} elseif ($value!==null) {
 				$html .= ' ' . $name . '="' . ($raw ? $value : self::encode($value)) . '"';

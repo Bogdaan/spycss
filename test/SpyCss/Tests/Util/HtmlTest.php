@@ -20,6 +20,9 @@ class HtmlTest extends TestCase
         $this->assertEquals('<input type="text" />',
             Html::tag('input', ['type' => 'text'], false, true));
 
+        $this->assertEquals('<input type="text" required />',
+            Html::tag('input', ['type' => 'text', 'required' => true], false, true));
+
         $this->assertEquals('<div><br /></div>',
             Html::tag('div', [], '<br />', true));
     }

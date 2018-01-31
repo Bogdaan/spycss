@@ -1,5 +1,8 @@
 # SpyCss
 
+[![Build
+Status](https://secure.travis-ci.org/Bogdaan/spycss.png)](http://travis-ci.org/Bogdaan/spycss)
+
 Analyze user interactions via CSS, without JavaScript on client-side.
 Demo at [spycss.hcbogdan.com](https://spycss.hcbogdan.com).
 
@@ -56,6 +59,7 @@ echo '<style>'.$s->extractStyles().'</style>';
 ## Read more
 
 + [Backend api](backend-api)
++ [Demo sources](https://github.com/Bogdaan/spycss-demo)
 
 ## Contributing
 
