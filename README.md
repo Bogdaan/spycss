@@ -20,6 +20,11 @@ This library was created in order to simplify the creation of tracking css.
 
 ## How to use
 
+First, install library with composer:
+```
+composer require bogdaan/spycss
+```
+
 For example, you want to track click / focus / hover on some link. This snippet
 generates css and html for you link, inside view:
 ```
@@ -51,14 +56,14 @@ echo $s->builder()
 echo '<style>'.$s->extractStyles().'</style>';
 ```
 
-## To be done
+## Todo
 
 - [ ] Review browser support
 - [ ] Update demo
 
 ## Read more
 
-+ [Backend api](backend-api)
++ [Backend api](docs/backend-api.md)
 + [Demo sources](https://github.com/Bogdaan/spycss-demo)
 
 ## Contributing
