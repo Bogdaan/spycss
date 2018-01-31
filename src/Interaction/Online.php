@@ -50,7 +50,7 @@ class Online extends \SpyCss\Interaction
             $propTemplate .= $preffix.'animation: '.$animationName.' '.$durationSeconds.'s infinite;';
         }
 
-        $template .= $this->cssClass.':hover::after { '
+        $template .= '.'.$this->cssClass.':hover::after { '
             .$propTemplate
             .'content: url("'. $baseRoute.'?t=-'.$durationSeconds.'"); }';
 

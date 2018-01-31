@@ -25,6 +25,6 @@ class Valid extends \SpyCss\Interaction
             'valid',
             $this->payload
         ]);
-        return $this->cssClass.':valid {background-image: url('.$route.');}';
+        return '.'.$this->cssClass.':valid {background-image: url('.$route.');}';
     }
 }
