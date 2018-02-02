@@ -12,7 +12,7 @@ Demo at [spycss.hcbogdan.com](https://spycss.hcbogdan.com).
 ## How it works
 
 As you probably know, in css we can add external resources via `url(resource)`
-property. Usualy, this resource is only loaded when its needed. So, we can
+property. Usually, this resource is only loaded when its needed. So, we can
 create HTML/CSS that will track user interactions, and send request to our
 backend.
 
