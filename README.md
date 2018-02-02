@@ -21,13 +21,15 @@ This library was created in order to simplify the creation of tracking css.
 ## How to use
 
 First, install library with composer:
-```
+
+```bash
 composer require bogdaan/spycss
 ```
 
 For example, you want to track click / focus / hover on some link. This snippet
 generates css and html for you link, inside view:
-```
+
+```php
 <?php
 use SpyCss\SpyCss;
 use SpyCss\Interaction\Active;
@@ -60,6 +62,8 @@ echo '<style>'.$s->extractStyles().'</style>';
 
 - [ ] Review browser support
 - [ ] Update demo
+- [ ] Add more interactions
+- [ ] Implement twig helper
 
 ## Read more
 
