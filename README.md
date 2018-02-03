@@ -26,16 +26,11 @@ First, install library with composer:
 composer require bogdaan/spycss
 ```
 
-For example, you want to track click / focus / hover on some link. This snippet
-generates css and html for you link, inside view:
+For example, you want to track click on some link. We can use [this snippet](https://jsfiddle.net/hcbogdan/tp4cj3jy/) to
+generates CSS and HTML for you link inside view:
 
 ```php
 <?php
-use SpyCss\SpyCss;
-use SpyCss\Interaction\Active;
-use SpyCss\Interaction\Focus;
-use SpyCss\Interaction\Hover;
-
 // inside controller or DI:
 $userId = 'get_from_cookie--OR--fetch_from_db';
 $backendUrl = 'https://spy-css-backend/';
@@ -48,14 +43,58 @@ echo $s->builder()
     ->content('Novikov Bogdan')
     ->attribute('href', 'https://hcbogdan.com')
     ->interactions([
-        new Active('when-user-active'),
-        new Focus('when-user-focus'),
-        new Hover('when-user-hover'),
+        new \SpyCss\Interaction\Active('click_on_hcbogdan_com')
+    ])
+    ->get();
+
+// generates special styles like:
+// .scsssXXXX:active::after {content: url(https://spy-css-backend/userId/active/click_on_hcbogdan_com);}'
+echo '<style>'.$s->extractStyles().'</style>';
+```
+
+You can create keylogger for **input type="text"** fields (snippet at [jsfiddle](https://jsfiddle.net/hcbogdan/6hmm2z47/)):
+
+```php
+<?php
+// ... init SpyCss
+
+// set alphabet
+$logThisChars = 'abcdefgABCDEFG';
+
+// create input field
+echo $s->builder()
+    ->tag('input')
+    ->attribute('name', 'field')
+    ->interactions([
+        new \SpyCss\Interaction\Keylogger($logThisChars)
     ])
     ->get();
 
 // generates special styles
 echo '<style>'.$s->extractStyles().'</style>';
+```
+
+See more examples at [spycss-demo](https://github.com/Bogdaan/spycss-demo/blob/master/src/controllers.php#L22)
+
+
+## Directory structure
+
+```
+./src/
+├── Builder.php          # Tag builder with fluent interface
+├── Interaction          #
+│   ├── Active.php       # Track :active state
+│   ├── Checked.php      # Track :checked state on input and option
+│   ├── Focus.php        # Track :focus state
+│   ├── Hover.php        # Track :hover state
+│   ├── Keylogger.php    # Track key press on text fields
+│   ├── Online.php       # Online tracking
+│   ├── Pseudo.php       #
+│   └── Valid.php        # Track :valid state
+├── Interaction.php      # Base class for interactions
+├── SpyCss.php           #
+└── Util                 #
+    └── Html.php         # Html tag helpers
 ```
 
 ## Todo
@@ -69,6 +108,7 @@ echo '<style>'.$s->extractStyles().'</style>';
 
 + [Backend api](docs/backend-api.md)
 + [Demo sources](https://github.com/Bogdaan/spycss-demo)
++ [Habrahabr (ru language)](https://habrahabr.ru/post/348196/)
 
 ## Contributing
 
